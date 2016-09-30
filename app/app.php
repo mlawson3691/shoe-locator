@@ -53,7 +53,7 @@
     });
 
     $app->get('/brands', function() use ($app) {
-        return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()));
+        return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll(), 'brand' => null));
     });
 
     return $app;

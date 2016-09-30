@@ -1,0 +1,101 @@
+<html>
+<body>
+<div class='container'>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">The Ultimate Shoe Finder</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/stores">Browse Stores</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search <span class="caret"></span></a>
+                        <ul class="dropdown-menu search">
+                            <li>
+                                <form class="navbar-form">
+                                    <div class='input-group'>
+                                        <label class='sr-only'>Search</label>
+                                        <input type="text" name="search_input" class='form-control' placeholder='Search...' required>
+                                        <span class="input-group-btn">
+                                            <button type="submit" class='btn btn-warning'><span class='glyphicon glyphicon-search'></span></button>
+                                        </span>
+                                    </div>
+                                    <div class="form-group search_options">
+                                        <label class="radio-inline"><strong>By: </strong></label>
+                                        <label class="radio-inline"><input type="radio" name="search_by" value="brand" checked>Brand</label>
+                                        <label class="radio-inline"><input type="radio" name="search_by" value="store">Store</label>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="well">
+                {% if brands is not empty %}
+                    <h3>Browse Brands</h3>
+                    <ul>
+                        {% for brand in brands %}
+                            <a href='/brands/{{ brand.getId }}'><li>{{ brand.getName }}</li></a>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                {% endif %}
+                <h3>Add a Brand</h3>
+                <form action='/brands' method='post'>
+                    <div class='form-group'>
+                        <label for='name'>Name:</label>
+                        <input id='name' type='text' name='name' class='form-control' required>
+                    </div>
+                    <button type='submit' class='btn btn-warning'>Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="well">
+                {% if brand is empty %}
+                    <h3 class='text-center'>Select a brand from the list</h3>
+                {% else %}
+                    <h2>{{ brand.getName }}</h2>
+                    {% if brand.getStores is not empty %}
+                        <h4>Stores:</h4>
+                        <ul>
+                            {% for store in store.getBrands %}
+                                <a href='/stores/{{ store.getId }}'><li>{{ store.getName }}</li></a>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <hr>
+                    <form action='/brands/{{ brand.getId }}' method='post'>
+                        <input type='hidden' name='_method' value='patch'>
+                        <h3>Edit this Store</h3>
+                        <div class='form-group'>
+                            <label for='name'>Name:</label>
+                            <input type='text' name='name' class='form-control' required>
+                        </div>
+                        <button type='submit' class='btn btn-warning'>Edit</button>
+                    </form>
+                    <form action='/brands/{{ brand.getId }}' method='post'>
+                        <input type='hidden' name='_method' value='delete'>
+                        <button type='submit' class='btn btn-danger pull-right'>Delete</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
