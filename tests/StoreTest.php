@@ -73,6 +73,19 @@
             $this->assertEquals([$test_store2], $result);
         }
 
+        function test_update()
+        {
+            $name = 'DSW';
+            $test_store = new Store($name);
+            $test_store->save();
+            $new_name = 'Foot Locker';
+
+            $test_store->update($new_name);
+            $result = $test_store->getName();
+
+            $this->assertEquals($new_name, $result);
+        }
+
         function test_find()
         {
             $name = 'DSW';
