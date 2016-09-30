@@ -43,7 +43,7 @@
         </div>
     </nav>
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="well">
                 {% if stores is not empty %}
                     <h3>Browse Stores</h3>
@@ -64,7 +64,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <div class="well">
                 {% if store is empty %}
                     <h3 class='text-center'>Select a store from the list</h3>
@@ -74,7 +74,14 @@
                         <h4>Brands offered:</h4>
                         <ul>
                             {% for brand in store.getBrands %}
-                                <a href='/brands/{{ brand.getId }}'><li>{{ brand.getName }}</li></a>
+                                <li class='spacedLists'>
+                                    <a href='/brands/{{ brand.getId }}'>{{ brand.getName }}</a>
+                                    <form class='trashForm' action='/stores/remove/{{ store.getId }}' method='post'>
+                                        <input type="hidden" name="_method" value="delete">
+                                        <input type="hidden" name="brand_id" value="{{ brand.getId }}">
+                                        <button class='trash' type='submit'><span class='glyphicon glyphicon-trash'></span></button>
+                                    </form>
+                                </li>
                             {% endfor %}
                         </ul>
                     {% endif %}

@@ -2,6 +2,7 @@ body {
     background: url('../img/stadium.jpeg') center center no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    font-size: 1.75em;
 }
 
 ul {
@@ -18,10 +19,6 @@ li {
 
 .jumbotron h1 {
     margin-bottom: 20px;
-}
-
-.navbar-default a {
-    font-size: 1.3em;
 }
 
 .search {
@@ -64,6 +61,28 @@ a:hover, a:active, a:focus {
 .btn-warning:hover, .btn-warning:active, .btn-warning:focus {
     background: #a63b26;
     color: white;
+}
+
+.spacedLists {
+    margin-top: 10px;
+}
+
+.trashForm {
+    display: inline;
+}
+
+.trash {
+    border: none;
+    background: transparent;
+    margin-left: 5px;
+}
+
+.trash:hover {
+    color: red;
+}
+
+#searchResults {
+    padding: 25px 40px;
 }
 
 #homeSearch {
