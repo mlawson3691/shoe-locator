@@ -89,5 +89,25 @@
 
             $this->assertEquals([$test_store], $result);
         }
+
+        function test_getStores()
+        {
+            $name = 'Nike';
+            $test_brand = new Brand($name);
+            $test_brand->save();
+
+            $name = 'DSW';
+            $test_store = new Store($name);
+            $test_store->save();
+            $test_brand->addStore($test_store->getId());
+            $name2 = 'Foot Locker';
+            $test_store2 = new Store($name2);
+            $test_store2->save();
+            $test_brand->addStore($test_store2->getId());
+
+            $result = $test_brand->getStores();
+
+            $this->assertEquals([$test_store, $test_store2], $result);
+        }
     }
 ?>
