@@ -79,7 +79,24 @@
                         </ul>
                     {% endif %}
                     <hr>
-                    
+                    <form action='/brands/add/{{ brand.getId }}' method='post'>
+                        <h3>Add a Store to This Brand</h3>
+                        {% if stores is empty %}
+                            <br>
+                            <a href='/stores'><h4>You must first create a store</h4></a>
+                        {% else %}
+                            <div class='form-group'>
+                                <label>Name:</label>
+                                <select class='form-control' name='store_id'>
+                                    <option disabled selected value>Choose a store</option>
+                                    {% for store in stores %}
+                                        <option value='{{ store.getId }}'>{{ store.getName }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type='submit' class='btn btn-warning'>Add</button>
+                        {% endif %}
+                    </form>
                 {% endif %}
             </div>
         </div>
