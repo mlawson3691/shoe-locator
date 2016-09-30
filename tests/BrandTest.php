@@ -118,6 +118,23 @@
             $this->assertEquals([$test_store], $result);
         }
 
+        function test_addStore_preventDuplicates()
+        {
+            $name = 'Nike';
+            $test_brand = new Brand($name);
+            $test_brand->save();
+
+            $name = 'DSW';
+            $test_store = new Store($name);
+            $test_store->save();
+            $test_brand->addStore($test_store->getId());
+            $test_brand->addStore($test_store->getId());
+
+            $result = $test_brand->getStores();
+
+            $this->assertEquals([$test_store], $result);
+        }
+
         function test_getStores()
         {
             $name = 'Nike';

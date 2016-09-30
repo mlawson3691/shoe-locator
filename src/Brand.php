@@ -76,7 +76,11 @@
 
         function addStore($store_id)
         {
-            $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->getId()}, {$store_id});");
+            $store = Store::find($store_id);
+            $brandStores = $this->getStores();
+            if (!in_array($store, $brandStores)) {
+                $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->getId()}, {$store_id});");
+            }
         }
 
         function getStores()
