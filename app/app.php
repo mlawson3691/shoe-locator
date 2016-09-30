@@ -29,6 +29,12 @@
         return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'store' => null));
     });
 
+    $app->post('/stores', function() use ($app) {
+        $new_store = new Store($_POST['name']);
+        $new_store->save();
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'store' => $new_store));
+    });
+
     $app->get('/brands', function() use ($app) {
         return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()));
     });
