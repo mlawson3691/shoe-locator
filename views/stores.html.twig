@@ -58,7 +58,7 @@
                 <form action='/stores' method='post'>
                     <div class='form-group'>
                         <label for='name'>Name:</label>
-                        <input id='name' type='text' name='name' class='form-control'>
+                        <input id='name' type='text' name='name' class='form-control' required>
                     </div>
                     <button type='submit' class='btn btn-warning'>Add</button>
                 </form>
@@ -78,6 +78,16 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
+                    <hr>
+                    <form action='/stores/{{ store.getId }}' method='post'>
+                        <input type='hidden' name='_method' value='patch'>
+                        <h3>Edit this Store</h3>
+                        <div class='form-group'>
+                            <label for='name'>Name:</label>
+                            <input type='text' name='name' class='form-control' required>
+                        </div>
+                        <button type='submit' class='btn btn-warning'>Edit</button>
+                    </form>
                 {% endif %}
             </div>
         </div>
