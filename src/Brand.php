@@ -99,6 +99,11 @@
             return $stores;
         }
 
+        function removeStore($store_id)
+        {
+            $GLOBALS['DB']->exec("DELETE FROM brands_stores WHERE brand_id = {$this->getId()} AND store_id = {$store_id};");
+        }
+
         static function search($search_input)
         {
             $all_brands = Brand::getAll();

@@ -155,6 +155,27 @@
             $this->assertEquals([$test_brand, $test_brand2], $result);
         }
 
+        function test_removeBrand()
+        {
+            $name = 'DSW';
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $name = 'Nike';
+            $test_brand = new Brand($name);
+            $test_brand->save();
+            $test_store->addBrand($test_brand->getId());
+            $name2 = 'Adidas';
+            $test_brand2 = new Brand($name2);
+            $test_brand2->save();
+            $test_store->addBrand($test_brand2->getId());
+
+            $test_store->removeBrand($test_brand->getId());
+            $result = $test_store->getBrands();
+
+            $this->assertEquals([$test_brand2], $result);
+        }
+
         function test_search()
         {
             $name = 'DSW';
