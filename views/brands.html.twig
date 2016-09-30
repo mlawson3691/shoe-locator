@@ -71,7 +71,7 @@
                 {% else %}
                     <h2>{{ brand.getName }}</h2>
                     {% if brand.getStores is not empty %}
-                        <h4>Stores:</h4>
+                        <h4>Available at:</h4>
                         <ul>
                             {% for store in brand.getStores %}
                                 <a href='/stores/{{ store.getId }}'><li>{{ store.getName }}</li></a>

@@ -1,3 +1,29 @@
+body {
+    background: url('../img/stadium.jpeg') center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.jumbotron {
+    margin-top: 5%;
+}
+
+.jumbotron h1 {
+    margin-bottom: 2.5%;
+}
+
+.navbar-default a {
+    font-size: 1.3em;
+}
+
 .search {
     width: 225px;
 }
@@ -13,5 +39,26 @@
 }
 
 .well {
-    overflow: hidden;
+    background: white;
+    opacity: 0.95;
+    border-radius: 25px;
+}
+
+a, a:visited {
+    color: #336600;
+}
+
+a:hover, a:active, a:focus {
+    color: #414931;
+}
+
+.btn-warning, .btn-warning:visited {
+    background: #D45C43;
+    border: none;
+    color: white;
+}
+
+.btn-warning:hover, .btn-warning:active, .btn-warning:focus {
+    background: #a63b26;
+    color: white;
 }

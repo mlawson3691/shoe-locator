@@ -71,7 +71,7 @@
                 {% else %}
                     <h2>{{ store.getName }}</h2>
                     {% if store.getBrands is not empty %}
-                        <h4>Brands:</h4>
+                        <h4>Brands offered:</h4>
                         <ul>
                             {% for brand in store.getBrands %}
                                 <a href='/brands/{{ brand.getId }}'><li>{{ brand.getName }}</li></a>
@@ -112,7 +112,7 @@
                             </form>
                             <form action='/stores/{{ store.getId }}' method='post'>
                                 <input type='hidden' name='_method' value='delete'>
-                                <button type='submit' class='btn btn-danger pull-right'>Delete</button>
+                                <button type='submit' class='btn btn-warning pull-right'>Delete</button>
                             </form>
                         </div>
                     </div>
