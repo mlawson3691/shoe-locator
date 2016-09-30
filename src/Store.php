@@ -72,5 +72,10 @@
             }
             return $found_store;
         }
+
+        function addBrand($brand_id)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$brand_id}, {$this->getId()});");
+        }
     }
 ?>
