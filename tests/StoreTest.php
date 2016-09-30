@@ -72,5 +72,19 @@
 
             $this->assertEquals([$test_store2], $result);
         }
+
+        function test_find()
+        {
+            $name = 'DSW';
+            $test_store = new Store($name);
+            $test_store->save();
+            $name2 = 'Foot Locker';
+            $test_store2 = new Store($name2);
+            $test_store2->save();
+
+            $result = Store::find($test_store->getId());
+
+            $this->assertEquals($test_store, $result);
+        }
     }
 ?>
