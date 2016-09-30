@@ -25,5 +25,13 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->get('/stores', function() use ($app) {
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'store' => null));
+    });
+
+    $app->get('/brands', function() use ($app) {
+        return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()));
+    });
+
     return $app;
 ?>
