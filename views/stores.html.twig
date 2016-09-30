@@ -54,8 +54,8 @@
                     </ul>
                     <hr>
                 {% endif %}
-                <h3>Add a Store</h3>
                 <form action='/stores' method='post'>
+                    <h3>Add a Store</h3>
                     <div class='form-group'>
                         <label for='name'>Name:</label>
                         <input id='name' type='text' name='name' class='form-control' required>
@@ -79,19 +79,43 @@
                         </ul>
                     {% endif %}
                     <hr>
-                    <form action='/stores/{{ store.getId }}' method='post'>
-                        <input type='hidden' name='_method' value='patch'>
-                        <h3>Edit this Store</h3>
-                        <div class='form-group'>
-                            <label for='name'>Name:</label>
-                            <input type='text' name='name' class='form-control' required>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <form action='/stores/add/{{ store.getId }}' method='post'>
+                                <h3>Add a Brand to This Store</h3>
+                                {% if brands is empty %}
+                                    <br>
+                                    <a href='/brands'><h4>You must first create a brand</h4></a>
+                                {% else %}
+                                    <div class='form-group'>
+                                        <label>Name:</label>
+                                        <select class='form-control' name='brand_id'>
+                                            <option disabled selected value>Choose a brand</option>
+                                            {% for brand in brands %}
+                                                <option value='{{ brand.getId }}'>{{ brand.getName }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <button type='submit' class='btn btn-warning'>Add</button>
+                                {% endif %}
+                            </form>
                         </div>
-                        <button type='submit' class='btn btn-warning'>Edit</button>
-                    </form>
-                    <form action='/stores/{{ store.getId }}' method='post'>
-                        <input type='hidden' name='_method' value='delete'>
-                        <button type='submit' class='btn btn-danger pull-right'>Delete</button>
-                    </form>
+                        <div class='col-sm-6'>
+                            <form action='/stores/{{ store.getId }}' method='post'>
+                                <input type='hidden' name='_method' value='patch'>
+                                <h3>Edit this Store</h3>
+                                <div class='form-group'>
+                                    <label for='name'>Name:</label>
+                                    <input type='text' name='name' class='form-control' required>
+                                </div>
+                                <button type='submit' class='btn btn-warning'>Edit</button>
+                            </form>
+                            <form action='/stores/{{ store.getId }}' method='post'>
+                                <input type='hidden' name='_method' value='delete'>
+                                <button type='submit' class='btn btn-danger pull-right'>Delete</button>
+                            </form>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         </div>
