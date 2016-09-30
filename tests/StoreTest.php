@@ -15,7 +15,7 @@
     {
         protected function tearDown()
         {
-            Store::deleteAll();
+            // Store::deleteAll();
         }
 
         function test_save()
@@ -27,6 +27,20 @@
             $result = Store::getAll();
 
             $this->assertEquals($test_store, $result[0]);
+        }
+
+        function test_getAll()
+        {
+            $name = 'DSW';
+            $test_store = new Store($name);
+            $test_store->save();
+            $name2 = 'Foot Locker';
+            $test_store2 = new Store($name2);
+            $test_store2->save();
+
+            $result = Store::getAll();
+
+            $this->assertEquals([$test_store, $test_store2], $result);
         }
     }
 ?>
