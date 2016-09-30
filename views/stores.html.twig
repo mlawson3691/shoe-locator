@@ -88,6 +88,10 @@
                         </div>
                         <button type='submit' class='btn btn-warning'>Edit</button>
                     </form>
+                    <form action='/stores/{{ store.getId }}' method='post'>
+                        <input type='hidden' name='_method' value='delete'>
+                        <button type='submit' class='btn btn-danger pull-right'>Delete</button>
+                    </form>
                 {% endif %}
             </div>
         </div>
