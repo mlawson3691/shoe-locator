@@ -1,0 +1,13 @@
+.search {
+    width: 225px;
+}
+
+.search_options {
+    margin-top: 10px;
+    margin-left: -15px;
+}
+
+.glyphicon {
+    font-size: 16px;
+    line-height: 20px;
+}
