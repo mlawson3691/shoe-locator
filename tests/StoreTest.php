@@ -57,5 +57,20 @@
 
             $this->assertEquals([], $result);
         }
+
+        function test_delete()
+        {
+            $name = 'DSW';
+            $test_store = new Store($name);
+            $test_store->save();
+            $name2 = 'Foot Locker';
+            $test_store2 = new Store($name2);
+            $test_store2->save();
+
+            $test_store->delete();
+            $result = Store::getAll();
+
+            $this->assertEquals([$test_store2], $result);
+        }
     }
 ?>
