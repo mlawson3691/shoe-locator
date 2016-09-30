@@ -79,5 +79,17 @@
         return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll(), 'stores' => Store::getAll(), 'brand' => $found_brand));
     });
 
+    $app->post('/search', function() use ($app) {
+        $search_by = $_POST['search_by'];
+        if ($search_by == 'brand') {
+            $results = Brand::search($_POST['search_input']);
+            $category = 'brand';
+        } else {
+            $results = Store::search($_POST['search_input']);
+            $category = 'store';
+        }
+        return $app['twig']->render('search.html.twig', array('results' => $results, 'category' => $category));
+    });
+
     return $app;
 ?>

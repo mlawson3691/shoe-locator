@@ -1,0 +1,64 @@
+<html>
+<body>
+<div class='container'>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">The Ultimate Shoe Finder</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/stores">Browse Brands</a></li>
+                    <li><a href="/stores">Browse Stores</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search <span class="caret"></span></a>
+                        <ul class="dropdown-menu search">
+                            <li>
+                                <form class="navbar-form" action='/search' method='post'>
+                                    <div class='input-group'>
+                                        <label class='sr-only'>Search</label>
+                                        <input type="text" name="search_input" class='form-control' placeholder='Search...' required>
+                                        <span class="input-group-btn">
+                                            <button type="submit" class='btn btn-warning'><span class='glyphicon glyphicon-search'></span></button>
+                                        </span>
+                                    </div>
+                                    <div class="form-group search_options">
+                                        <label class="radio-inline"><strong>By: </strong></label>
+                                        <label class="radio-inline"><input type="radio" name="search_by" value="brand" checked>Brand</label>
+                                        <label class="radio-inline"><input type="radio" name="search_by" value="store">Store</label>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="well">
+        <h2>Search Results</h2>
+        {% if results is empty %}
+            <h3 class='text-center'>There are no results matching your search</h3>
+        {% else %}
+            <ul>
+            {% for result in results %}
+                {% if category == 'brand' %}
+                    <a href='/brands/{{ result.getId }}'><li><h3>{{ result.getName }}</h3></li></a>
+                {% else %}
+                    <a href='/stores/{{ result.getId }}'><li><h3>{{ result.getName }}</h3></li></a>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

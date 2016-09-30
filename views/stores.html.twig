@@ -21,7 +21,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search <span class="caret"></span></a>
                         <ul class="dropdown-menu search">
                             <li>
-                                <form class="navbar-form">
+                                <form class="navbar-form" action='/search' method='post'>
                                     <div class='input-group'>
                                         <label class='sr-only'>Search</label>
                                         <input type="text" name="search_input" class='form-control' placeholder='Search...' required>
@@ -54,8 +54,8 @@
                     </ul>
                     <hr>
                 {% endif %}
+                <h3>Add a Store</h3>
                 <form action='/stores' method='post'>
-                    <h3>Add a Store</h3>
                     <div class='form-group'>
                         <label for='name'>Name:</label>
                         <input id='name' type='text' name='name' class='form-control' required>
