@@ -28,6 +28,7 @@ This application is an exercise in PHP BDD testing with many-to-many relationshi
 * USE shoes;
 * CREATE TABLE stores (id serial PRIMARY KEY, name VARCHAR (255));
 * CREATE TABLE brands (id serial PRIMARY KEY, name VARCHAR (255));
+* CREATE TABLE brands_stores (id serial PRIMARY KEY, brand_id INT, store_id INT);
 * (copy database in phpmyadmin to create shoes_test)
 
 ## Specifications
@@ -72,9 +73,21 @@ This application is an exercise in PHP BDD testing with many-to-many relationshi
     * Example input: 1
     * Example output: Nike
 
+* The program will add a brand to a store
+    * Example input: DSW
+    * Example output: Nike
+
 * The program will return all brands of a specific store
     * Example input: Foot Locker
     * Example output: brand 1, brand 2
+
+* The program will add a store to a brand
+    * Example input: Nike
+    * Example output: DSW
+
+* The program will return all stores of a specific brand
+    * Example input: Nike
+    * Example output: store 1, store 2
 
 ## Known Bugs ##
 
