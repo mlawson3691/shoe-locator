@@ -93,5 +93,17 @@
             }
             return $brands;
         }
+
+        static function search($search_input)
+        {
+            $all_stores = Store::getAll();
+            $matched_stores = array();
+            foreach($all_stores as $store) {
+                if (stripos($store->getName(), $search_input) !== false) {
+                    array_push($matched_stores, $store);
+                }
+            }
+            return $matched_stores;
+        }
     }
 ?>

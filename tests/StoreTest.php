@@ -137,5 +137,23 @@
 
             $this->assertEquals([$test_brand, $test_brand2], $result);
         }
+
+        function test_search()
+        {
+            $name = 'DSW';
+            $test_store = new Store($name);
+            $test_store->save();
+            $name2 = 'Foot Locker';
+            $test_store2 = new Store($name2);
+            $test_store2->save();
+            $name3 = 'Right Foot Shoes';
+            $test_store3 = new Store($name3);
+            $test_store3->save();
+
+            $search_input = 'foot';
+            $result = Store::search($search_input);
+
+            $this->assertEquals([$test_store2, $test_store3], $result);
+        }
     }
 ?>

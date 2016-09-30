@@ -109,5 +109,20 @@
 
             $this->assertEquals([$test_store, $test_store2], $result);
         }
+
+        function test_search()
+        {
+            $name = 'Nike';
+            $test_brand = new Brand($name);
+            $test_brand->save();
+            $name2 = 'Adidas';
+            $test_brand2 = new Brand($name2);
+            $test_brand2->save();
+
+            $search_input = 'das';
+            $result = Brand::search($search_input);
+
+            $this->assertEquals([$test_brand2], $result);
+        }
     }
 ?>
